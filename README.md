@@ -55,10 +55,3 @@ The server will start and listen for requests.
 ## **Upcoming Changes**
 - making it available on docker
 ```
-
-## **Contributing**  
-Feel free to fork, improve, and submit pull requests!  
-
----
-
-Let me know if you want any modifications! 🚀
