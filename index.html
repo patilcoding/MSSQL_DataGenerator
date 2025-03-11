@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Server Fake Data Generator</title>
+    <script>
+        function generateFakeData() {
+            let tableName = document.getElementById("table_name").value;
+            let numRecords = document.getElementById("num_records").value;
+
+            fetch("/generate-data", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ table_name: tableName, num_records: numRecords })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</head>
+<body>
+    <h2>SQL Server Fake Data Generator</h2>
+    <label>Table Name:</label>
+    <input type="text" id="table_name" placeholder="Enter table name"><br><br>
+    <label>Number of Records:</label>
+    <input type="number" id="num_records" placeholder="Enter number of records"><br><br>
+    <button onclick="generateFakeData()">Generate Data</button>
+    <h3>Output:</h3>
+    <pre id="output"></pre>
+</body>
+</html>
